@@ -41,7 +41,6 @@ pip install -r requirements.txt
 Create a `.env` file in the root directory and add the following variables:
 ```
 OPENWEATHERMAP_API_KEY=your_openweathermap_api_key
-
 ```
 
 #### Apply Migrations
@@ -74,6 +73,13 @@ requirements.txt       # Lists the project dependencies.
 - **Tasks:** Manage tasks through the tasks page (`/tasks`).
 - **Calendar:** Manage calendar events through the calendar page (`/calendar`).
 - **Reminders:** Manage reminders through the reminders page (`/reminders`).
+
+## Snapshots
+![Dashboard View](image1.jpeg)
+![News](image2.jpeg)
+![Task](image1.jpeg)
+![Calendar](image2.jpeg)
+![Reminder](image2.jpeg)
 
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
