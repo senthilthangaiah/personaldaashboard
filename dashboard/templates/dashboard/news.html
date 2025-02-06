@@ -1,0 +1,119 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 columns */
+            gap: 20px; /* Space between columns */
+            padding: 20px;
+        }
+        .category {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .category h3 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .news-box {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .news-box:hover {
+            background: #f1f1f1;
+            cursor: pointer;
+        }
+        p {
+            font-size: 10px; /* Adjust to desired size */
+            line-height: 1.4; /* Ensure readability */
+        }
+        strong {
+            font-size: 10px;
+        }
+        a {
+            font-size: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                grid-template-columns: 1fr; /* 1 column for mobile */
+            }
+        }
+    </style>
+
+    <div class="container">
+        {% for category, news_list in initial_news.items %}
+        <div class="category">
+            <h3>{{ category }}</h3>
+            {% for news in news_list %}
+            <div class="news-box">
+                <h5>{{ news.title }}</h5>
+                <p>{{ news.body }}</p>  <!-- Display summarized news -->
+                <p><strong>Source:</strong> {{ news.source }}</p>
+                <a href="{{ news.url }}" target="_blank">Read more</a>
+            </div>
+            {% endfor %}
+            <button onclick="fetchNews('{{ category }}')">Fetch News</button>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+    async function fetchNews(category) {
+        const response = await fetch("/fetch_news", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ category: category }),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            const categoryDiv = Array.from(document.querySelectorAll('.category')).find(div =>
+                div.querySelector('h3').innerText === category
+            );
+
+            const newsBox = categoryDiv.querySelector('.news-box');
+            newsBox.innerHTML = ""; // Clear existing content
+
+            // Iterate over news items and append each as a new box
+            data.news.forEach(newsItem => {
+                const newsHTML = `
+                    <div style="margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                        <h6>${newsItem.title}</h6>
+                        <p style="font-size=10px">${newsItem.body}</p>
+                        <p><strong>Source:</strong> ${newsItem.source}</p>
+                        <a href="${newsItem.url}" target="_blank">Read more</a>
+                    </div>
+                `;
+                newsBox.innerHTML += newsHTML;
+            });
+        } else {
+            alert("Failed to fetch news for " + category);
+        }
+    }
+    </script>
+{% endblock %}

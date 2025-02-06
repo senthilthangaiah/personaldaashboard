@@ -1,0 +1,33 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="container" style="width: 50%">
+<h1 class="mb-4">{{ form.instance.id|default:"Create" }} {{ form.instance|title }}</h1>
+<form method="post" class="needs-validation">
+    {% csrf_token %}
+    <table class="table">
+    
+        {% for field in form %}
+        <tr>
+        <td>
+            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+        </td>
+        <td>
+            {{ field }}
+        
+            {% if field.errors %}
+            <div class="text-danger">
+                {{ field.errors|striptags }}
+            </div>
+            {% endif %}
+        </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="{% url 'tasks' %}" class="btn btn-secondary">Cancel</a>
+</form>
+</div>
+{% endblock %}
+

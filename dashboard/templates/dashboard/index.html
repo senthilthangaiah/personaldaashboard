@@ -1,0 +1,153 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Personal Dashboard</h1>
+    <div class="row">
+        <!-- News Column -->
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <a href="{% url 'news' %}" style="text-decoration: none; color: inherit;"><h5 class="card-title">Latest News by Category</h5></a>
+                </div>
+                <div class="card-body">
+                    {% for category, articles in categorized_news.items %}
+                    <h3 class="mt-4">{{ category }}</h3>
+                    <ul class="list-unstyled">
+                        {% for article in articles %}
+                        <li class="mb-4">
+                            <strong>{{ article.title }}</strong><br>
+                            <p>{{ article.summary }}</p>
+                            <a href="{{ article.url }}" target="_blank" class="btn btn-sm btn-primary">Read More</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Summary Events Column -->
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <a href="{% url 'calendar' %}" style="text-decoration: none; color: inherit;" >
+                    <h5 class="card-title">Personal Summary</h5>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                           <small>{{ summary }}</small><br>
+                    </ul>
+                </div>
+            </div>
+        
+        
+        <!-- Upcoming Events Column -->
+        
+            <div class="card mb-3">
+                <div class="card-header">
+                    <a href="{% url 'calendar' %}" style="text-decoration: none; color: inherit;" >
+                    <h5 class="card-title">Upcoming Events</h5>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        {% for event in upcoming_events %}
+                        <li class="mb-2">
+                            <strong>{{ event.title }}</strong><br>
+                            <small>{{ event.date }}</small>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        
+
+
+
+
+        <!-- Reminders and Tasks Column -->
+            <!-- Reminders -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <a href="{% url 'reminders' %}" style="text-decoration: none; color: inherit;" >
+                    <h5 class="card-title">Reminders</h5>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        {% for reminder in incomplete_reminders %}
+                        <li class="mb-2">
+                            <strong>{{ reminder.title }}</strong><br>
+                            <small>Due: {{ reminder.due_date }}</small>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pending Tasks -->
+            <div class="card mb-3">
+                <div class="card-header">
+                     <a href="{% url 'tasks' %}" style="text-decoration: none; color: inherit;" >
+                    <h5 class="card-title">Pending Tasks</h5>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        {% for task in pending_tasks %}
+                        <li class="mb-2">
+                            <strong>{{ task.title }}</strong><br>
+                            <small>{{ task.description }}</small>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Weather Column -->
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title">Weather Forecast</h5>
+                </div>
+                <div class="card-body">
+                    {% if weather %}
+                    <p><strong>{{ weather.city }}</strong></p>
+                    <p>Temperature: {{ weather.temperature }}°C</p>
+                    <p>Condition: {{ weather.description }}</p>
+                    <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Weather Icon">
+                    {% else %}
+                    <p>Weather data not available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        
+        <!-- Stock Data Column -->
+        
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title">Stock Market (Sensex)</h5>
+                </div>
+                <div class="card-body">
+                    {% if sensex %}
+                    <p><strong>Last Refreshed:</strong> {{ sensex.last_refreshed }}</p>
+                    <p><strong>Open:</strong> {{ sensex.open }}</p>
+                    <p><strong>High:</strong> {{ sensex.high }}</p>
+                    <p><strong>Low:</strong> {{ sensex.low }}</p>
+                    <p><strong>Close:</strong> {{ sensex.close }}</p>
+                    <p><strong>Volume:</strong> {{ sensex.volume }}</p>
+                    {% else %}
+                    <p>Stock data not available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+{% endblock %}
