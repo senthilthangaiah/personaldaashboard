@@ -75,11 +75,11 @@ requirements.txt       # Lists the project dependencies.
 - **Reminders:** Manage reminders through the reminders page (`/reminders`).
 
 ## Snapshots
-![Dashboard View](image1.jpeg)
-![News](image2.jpeg)
-![Task](image1.jpeg)
-![Calendar](image2.jpeg)
-![Reminder](image2.jpeg)
+![Dashboard View](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img1.png)
+![News]([image2.jpeg](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img2.png))
+![Task]([image1.jpeg](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img3.png))
+![Calendar]([image2.jpeg](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img4.png))
+![Reminder](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img1.png)
 
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
