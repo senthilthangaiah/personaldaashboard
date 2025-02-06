@@ -90,7 +90,6 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ## Acknowledgments
 - Django for the web framework.
 - OpenWeatherMap for weather data.
-- Alpha Vantage for stock market data.
 - DuckDuckGo for news aggregation.
 
 ## Contact
