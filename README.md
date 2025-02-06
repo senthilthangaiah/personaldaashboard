@@ -41,7 +41,7 @@ pip install -r requirements.txt
 Create a `.env` file in the root directory and add the following variables:
 ```
 OPENWEATHERMAP_API_KEY=your_openweathermap_api_key
-ALPHA_VANTAGE_API_KEY=your_alpha_vantage_api_key
+
 ```
 
 #### Apply Migrations
