@@ -76,10 +76,10 @@ requirements.txt       # Lists the project dependencies.
 
 ## Snapshots
 ![Dashboard View](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img1.png)
-![News]([image2.jpeg](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img2.png)
-![Task]([image1.jpeg](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img3.png)
-![Calendar]([image2.jpeg](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img4.png)
-![Reminder](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img1.png)
+![News](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img2.png)
+![Task](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img4.png)
+![Calendar](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img4.png)
+![Reminder](https://github.com/senthilthangaiah/personaldaashboard/blob/master/images/img5.png)
 
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
