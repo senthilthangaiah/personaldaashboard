@@ -33,8 +33,8 @@ def dash_summary():
     return summary
 
 # Replace with your actual API keys
-OPENWEATHERMAP_API_KEY = 'aa7577ef0db30ea6f72608b8009efd98'
-ALPHA_VANTAGE_API_KEY = 'your_alpha_vantage_api_key'
+OPENWEATHERMAP_API_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXX'
+
 
 def get_weather_forecast(city="Chennai"):
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={OPENWEATHERMAP_API_KEY}&units=metric"
